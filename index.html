@@ -32,7 +32,7 @@
         <script>
 
             // Connexion à socket.io
-            var socket = io.connect('http://localhost:8080');
+            var socket = io.connect('https://nodechat59.herokuapp.com');
 
             // On demande le pseudo, on l'envoie au serveur et on l'affiche dans le titre
             var pseudo = prompt('Quel est votre pseudo ?');
@@ -59,7 +59,6 @@
             });
 
             $('#envoi_message_alt').click(function () {
-                console.log("*** JDE *** clic bouton");
                 var message = $('#message').val();
                 socket.emit('message', message); // Transmet le message aux autres
                 insereMessage(pseudo, message); // Affiche le message aussi sur notre page
