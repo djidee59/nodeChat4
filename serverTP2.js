@@ -6,11 +6,12 @@ var app = require('express')(),
 
 // Chargement de la page index.html
 app.get('/', function (req, res) {
-    // console.log("test papertrail");
+    console.log("test papertrail");
   res.sendfile(__dirname + '/index.html');
 });
 
 io.sockets.on('connection', function (socket, pseudo) {
+    console.log("conexion");
     // Dès qu'on nous donne un pseudo, on le stocke en variable de session et on informe les autres personnes
     socket.on('nouveau_client', function(pseudo) {
         console.log("event nouveau client debut");
