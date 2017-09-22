@@ -1,26 +1,19 @@
 {
-    "name": "super-chat",
-
-    "version": "0.1.0",
-
-    "engines": {
+  "name": "super-chat",
+  "version": "0.1.0",
+  "engines": {
     "node": "6.11.3",
     "npm": "3.10.10"
-  	},
-
-
-    "dependencies": {
-        "express": "~3.3.4",
-        "socket.io": "~1.2.1",
-        "ent": "~0.1.0",
-        "fs": "0.0.2"
-    },
-
-	"scripts": {
-	  "start": "node server.js"
-	},
-
-
-    "author": "Julien <juli1.2vilr@gmail.com>",
-    "description": "un chat"
+  },
+  "dependencies": {
+    "ent": "~0.1.0",
+    "express": "3.3.8",
+    "fs": "0.0.2",
+    "socket.io": "~1.2.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Julien <juli1.2vilr@gmail.com>",
+  "description": "un chat"
 }
