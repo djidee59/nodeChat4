@@ -6,17 +6,18 @@ var app = require('express')(),
 
 // Chargement de la page index.html
 app.get('/', function (req, res) {
-    console.log("test papertrail");
+    // console.log("test papertrail");
   res.sendfile(__dirname + '/index.html');
 });
 
 io.sockets.on('connection', function (socket, pseudo) {
     // Dès qu'on nous donne un pseudo, on le stocke en variable de session et on informe les autres personnes
     socket.on('nouveau_client', function(pseudo) {
+        console.log("event nouveau client debut");
         pseudo = ent.encode(pseudo);
         socket.pseudo = pseudo;
         socket.broadcast.emit('nouveau_client', pseudo);
-
+        console.log("event nouveau client fin");
     });
 
     // Dès qu'on reçoit un message, on récupère le pseudo de son auteur et on le transmet aux autres personnes
