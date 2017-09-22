@@ -6,7 +6,7 @@ var app = require('express')(),
 
 // Chargement de la page index.html
 app.get('/', function (req, res) {
-        process.stdout.write('loading html');
+    console.log("test papertrail");
   res.sendfile(__dirname + '/index.html');
 });
 
