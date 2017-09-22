@@ -6,6 +6,7 @@ var app = require('express')(),
 
 // Chargement de la page index.html
 app.get('/', function (req, res) {
+        process.stdout.write('loading html');
   res.sendfile(__dirname + '/index.html');
 });
 
@@ -15,7 +16,7 @@ io.sockets.on('connection', function (socket, pseudo) {
         pseudo = ent.encode(pseudo);
         socket.pseudo = pseudo;
         socket.broadcast.emit('nouveau_client', pseudo);
-        process.stdout.write('xxxx');
+
     });
 
     // Dès qu'on reçoit un message, on récupère le pseudo de son auteur et on le transmet aux autres personnes
