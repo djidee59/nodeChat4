@@ -1,24 +1,19 @@
-var app = require('express')(),
-    server = require('http').createServer(app),
-    io = require('socket.io').listen(server),
-    ent = require('ent'), // Permet de bloquer les caractères HTML (sécurité équivalente à htmlentities en PHP)
-    fs = require('fs');
+const express = require('express');
+const socketIO = require('socket.io');
+const path = require('path');
 
-// port variable sur heroku
-var port = Number(process.env.PORT || 8080);
+const PORT = process.env.PORT || 3000;
+const INDEX = path.join(__dirname, 'index.html');
 
+const server = express()
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-// Chargement de la page index.html
-app.get('/', function (req, res) {
-    console.log("*** JDE *** loading HTML");
-  res.sendfile(__dirname + '/index.html');
+const io = socketIO(server);
+
+io.on('connection', (socket) => {
+  console.log('Client connected');
+  socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
-// IO config zone
-io.sockets.on('connection', function (socket) {
-    console.log("*** JDE *** Client connected");
-    });
-
-
-server.listen(port);
-console.log("*** JDE *** Listening on "+ port );
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);

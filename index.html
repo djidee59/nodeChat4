@@ -1,41 +1,13 @@
-<!DOCTYPE html> 
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Super Chat temps réel !</title>
-        <style>
-            #zone_chat strong {
-                color: white;
-                background-color: black;
-                padding: 2px;
-            }
-        </style>
-    </head>
- 
-    <body>
-        <h1>Le super Chat temps réel !</h1>
-        <h2>exercice openclassroom</h2>
-
-        <form action="/" method="post" id="formulaire_chat">
-            <input type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus />
-            <input type="button" id="envoi_message_alt" value="Envoyer 2" />
-            <!-- <input type="submit" id="envoi_message" value="Envoyer" /> -->
-        </form>
-
-        <p id='server-time'></p>
-        <section id="zone_chat">
-            
-        </section>
-
-
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-        <script src="/socket.io/socket.io.js"></script>
-        <script>
-          var socket = io();
-          var el = document.getElementById('server-time');
-          socket.on('time', function(timeString) {
-            el.innerHTML = 'Server time: ' + timeString;
-          });
-        </script>
-    </body>
+  <body>
+    <p id='server-time'></p>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      var el = document.getElementById('server-time');
+      socket.on('time', function(timeString) {
+        el.innerHTML = 'Server time: ' + timeString;
+      });
+    </script>
+  </body>
 </html>
