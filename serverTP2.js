@@ -8,12 +8,22 @@ var app = require('express')(),
 var port = Number(process.env.PORT || 8080);
 
 
+
+
 // Chargement de la page index.html
 app.get('/', function (req, res) {
     console.log("*** JDE *** loading HTML");
   res.sendfile(__dirname + '/index.html');
 });
 
+// websocket server pour heroku
+const wss = new SocketServer({ server });
+wss.on('connection', (ws) => {
+  console.log('Client connected');
+  ws.on('close', () => console.log('Client disconnected'));
+});
+
+// OLD
 io.sockets.on('connection', function (socket, pseudo) {
 
 
