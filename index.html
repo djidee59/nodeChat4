@@ -39,7 +39,7 @@
       var socket = io();
       // On demande le pseudo, on l'envoie au serveur et on l'affiche dans le titre
       var pseudo = prompt('Quel est votre pseudo ?');
-      socket.emit('nouveau_client', pseudo);
+      socket.emit('message', pseudo);
       document.title = pseudo + ' - ' + document.title;
 
       // new client
