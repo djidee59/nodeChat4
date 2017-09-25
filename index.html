@@ -23,7 +23,7 @@
 
     <!-- appel scripts JS -->
     <script src="/socket.io/socket.io.js"></script>
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="/jquery.com/jquery-1.10.1.min.js"></script>
 
     <!-- appel scripts JS customs -->
     <script>
@@ -33,11 +33,6 @@
         el.innerHTML = 'Server time: ' + timeString;
       });
 
-      // Lorsqu'on envoie le formulaire, on transmet le message et on l'affiche sur la page
-      $( "#envoi_message_alt" ).click(function() {
-        alert( "Handler for .click() called." );
-      });
-      
     </script>
 
     <script>
@@ -53,7 +48,10 @@
           $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
       });
 
-
+     // Lorsqu'on envoie le formulaire, on transmet le message et on l'affiche sur la page
+      $( "#envoi_message_alt" ).click(function() {
+        alert( "Handler for .click() called." );
+      });
 
       // Ajoute un message dans la page
       function insereMessage(pseudo, message) {
