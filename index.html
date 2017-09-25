@@ -27,11 +27,14 @@
     </script>
 
     <script>
+
+    var socket = io();
     // On demande le pseudo, on l'envoie au serveur et on l'affiche dans le titre
     var pseudo = prompt('Quel est votre pseudo ?');
     socket.emit('nouveau_client', pseudo);
     document.title = pseudo + ' - ' + document.title;
 
+    // new client
     socket.on('nouveau_client', function(pseudo) {
         $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
     });
