@@ -20,12 +20,16 @@ io.on('connection', (socket) => {
 
   socket.on('nouveau_client', function(pseudo) {
     socket.pseudo = pseudo;
-    sockets.broadcast.emit('nouveau_client', pseudo);
+    socket.broadcast.emit('nouveau_client', pseudo);
     console.log("*** JDE *** pseudo: " + pseudo);
     });
 
-});
+    // Dès qu'on reçoit un message, on récupère le pseudo de son auteur et on le transmet aux autres personnes
+    socket.on('message', function (message) {
+    socket.broadcast.emit('message', {pseudo: socket.pseudo, message: message});
+    }); 
 
+});
 
 
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
