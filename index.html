@@ -1,7 +1,23 @@
 <html>
   <body>
     <p id='server-time'></p>
+
+    <h1>Le super Chat temps réel !</h1>
+
+        <form action="/" method="post" id="formulaire_chat">
+            <input type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus />
+            <input type="submit" id="envoi_message" value="Envoyer" />
+        </form>
+
+        <section id="zone_chat">
+        </section>
+
+
+    <!-- appel scripts JS -->
     <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+    <!-- appel scripts JS customs -->
     <script>
       var socket = io();
       var el = document.getElementById('server-time');
@@ -9,5 +25,17 @@
         el.innerHTML = 'Server time: ' + timeString;
       });
     </script>
+
+    <script>
+    // On demande le pseudo, on l'envoie au serveur et on l'affiche dans le titre
+    var pseudo = prompt('Quel est votre pseudo ?');
+    socket.emit('nouveau_client', pseudo);
+    document.title = pseudo + ' - ' + document.title;
+
+    socket.on('nouveau_client', function(pseudo) {
+        $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
+    })
+    </script>
+
   </body>
 </html>
