@@ -16,12 +16,7 @@ app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
 
-// websocket server pour heroku
-const wss = new SocketServer({ server });
-wss.on('connection', (ws) => {
-  console.log('Client connected');
-  ws.on('close', () => console.log('Client disconnected'));
-});
+
 
 // OLD
 io.sockets.on('connection', function (socket, pseudo) {
