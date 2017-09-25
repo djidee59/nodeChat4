@@ -40,7 +40,6 @@
       // On demande le pseudo, on l'envoie au serveur et on l'affiche dans le titre
       var pseudo = prompt('Quel est votre pseudo ?');
       socket.emit('nouveau_client', pseudo);
-      alert("pseudo");
       document.title = pseudo + ' - ' + document.title;
 
       // new client
@@ -49,7 +48,7 @@
       });
 
       // Lorsqu'on envoie le formulaire, on transmet le message et on l'affiche sur la page
-      $('#envoi_message_alt').click(function () {
+      $('#envoi_message_alt').button().click(function () {
           alert("jjjjjj!");
           var message = $('#message').val();
           socket.emit('message', message); // Transmet le message aux autres
