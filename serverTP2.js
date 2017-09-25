@@ -15,11 +15,12 @@ const io = socketIO(server);
 
 io.on('connection', (socket) => {
   console.log('Client connected');
+
   socket.on('disconnect', () => console.log('Client disconnected'));
 
-      socket.on('nouveau_client', function(pseudo) {
-        socket.pseudo = pseudo;
-        socket.broadcast.emit('nouveau_client', pseudo);
+  socket.on('nouveau_client', function(pseudo) {
+    socket.pseudo = pseudo;
+    socket.broadcast.emit('nouveau_client', pseudo);
     });
 
 });
