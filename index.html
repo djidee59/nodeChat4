@@ -44,8 +44,13 @@
       document.title = pseudo + ' - ' + document.title;
 
       // new client
-      socket.on('nouveau_client', function(pseudo) {
+      socket.on('nouveau_client_2', function(pseudo) {
           $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
+      });
+
+      // Quand on reçoit un message, on l'insère dans la page
+      socket.on('message', function(data) {
+          insereMessage(data.pseudo, data.message)
       });
 
      // Lorsqu'on envoie le formulaire, on transmet le message et on l'affiche sur la page
