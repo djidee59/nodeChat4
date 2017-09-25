@@ -20,7 +20,7 @@ io.on('connection', (socket) => {
 
   socket.on('nouveau_client', function(pseudo) {
     socket.pseudo = pseudo;
-    io.broadcast.emit('nouveau_client', pseudo);
+    socket.broadcast.emit('nouveau_client', pseudo);
     console.log("*** JDE *** pseudo: " + pseudo);
     });
 
