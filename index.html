@@ -48,12 +48,13 @@
       });
 
       // Lorsqu'on envoie le formulaire, on transmet le message et on l'affiche sur la page
-      $('#envoi_message_alt').click(function () {
+      $('#envoi_message_alt').click(function (e) {
           alert("jjjjjj!");
           var message = $('#message').val();
           socket.emit('message', message); // Transmet le message aux autres
           insereMessage(pseudo, message); // Affiche le message aussi sur notre page
           $('#message').val('').focus(); // Vide la zone de Chat et remet le focus dessus
+          e.preventDefault();
       });
 
       // Ajoute un message dans la page
