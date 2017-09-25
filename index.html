@@ -32,6 +32,12 @@
       socket.on('time', function(timeString) {
         el.innerHTML = 'Server time: ' + timeString;
       });
+
+      // Lorsqu'on envoie le formulaire, on transmet le message et on l'affiche sur la page
+      $( "#envoi_message_alt" ).click(function() {
+        alert( "Handler for .click() called." );
+      });
+      
     </script>
 
     <script>
@@ -47,10 +53,7 @@
           $('#zone_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
       });
 
-      // Lorsqu'on envoie le formulaire, on transmet le message et on l'affiche sur la page
-      $( "#envoi_message_alt" ).click(function() {
-        alert( "Handler for .click() called." );
-      });
+
 
       // Ajoute un message dans la page
       function insereMessage(pseudo, message) {
