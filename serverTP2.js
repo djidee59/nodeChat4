@@ -18,9 +18,7 @@ const io = socketIO(server);
 
 io.on('connection', function (socket) {
     console.log("*** JDE *** Client connected");
-    socket.on('dicsonnect', function (socket) {
-        console.log("*** JDE *** Client disconnected");
-    }
+
     });
 
 
